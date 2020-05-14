@@ -1,0 +1,72 @@
+<div class="container-fluid bg-image">
+    <div class="row">
+        <div style="margin-top: 8vh;" class="col-sm-12 col-md-6 col-lg-4 mx-auto">
+            <div class="card  cardBorder">
+
+                <div style="padding-top:100px" class="card-body text-center">
+                    <div class="text-center">
+                        <div>
+                            <h2>SIGN IN TO START YOUR TODO</h2>
+                        </div>
+                        <div>
+                            <img src="../assets/logo.png" style="height: 40px;">
+                            <h5>
+                                LIVE APP
+                            </h5>
+                        </div>
+                    </div>
+
+                    <br>
+                    <form id="loginform" class="form-horizontal" role="form" #loginForm="ngForm">
+                        <div class="input-group mb-3 form-field-container">
+
+                            <mat-form-field>
+                                <mat-label>Email</mat-label>
+
+                                <input matInput placeholder="Enter your email" [formControl]="email" required>
+                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="input-group mb-3 form-field-container">
+
+
+                            <mat-form-field appearance="standard">
+                                <mat-label>Password</mat-label>
+                                <input matInput type="password" placeholder="Enter your Password" minlength="8" #pwd="ngModel"
+                                    [(ngModel)]="password" name="password" (keydown)="loginUsingKeypress($event)" required>
+                                <mat-hint></mat-hint>
+
+                                <mat-error *ngIf="pwd.errors?.required">You must enter a value</mat-error>
+                                <mat-error *ngIf="pwd.errors?.minlength">You must enter atleast 8 Chars</mat-error>
+
+                            </mat-form-field>
+
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button style="float:center" id="btn-signin" type="button" class="btn btn-primary"
+                                    (click)="signInFunction()" [disabled]="!loginForm.valid">Login
+                                    Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <a mat-raised-link [routerLink]="['/user/forgot-password']" style="float:right">Forgot
+                            password?</a>
+
+                        <br>
+                        <br>
+                        <button mat-button class="btn btn-primary" style="float:left" type="button"  [routerLink]="['/user/signup']">Sign Up</button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
